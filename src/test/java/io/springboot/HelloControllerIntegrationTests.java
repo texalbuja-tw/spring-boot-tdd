@@ -21,7 +21,7 @@ public class HelloControllerIntegrationTests {
     public void testHelloWithoutName() throws Exception {
         mvc.perform(get("/hello").accept(MediaType.TEXT_PLAIN))
                 .andExpect(status().isOk())
-                .andExpect(view().name("hello"))
+                .andExpect(view().name("this will broke the pipeline"))
                 .andExpect(model().attribute("user", is("World")));
 
     }
