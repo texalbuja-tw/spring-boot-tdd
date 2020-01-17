@@ -42,20 +42,10 @@ jacocoTestReport {
 jacocoTestCoverageVerification {
 	violationRules {
 		rule {
+			element = 'CLASS'
+			excludes = ['io.springboot.entities.*', 'io.springboot.exceptions.*']
 			limit {
 				minimum = 0.3
-			}
-		}
-
-		rule {
-			enabled = false
-			element = 'CLASS'
-			includes = ['org.gradle.*']
-
-			limit {
-				counter = 'LINE'
-				value = 'TOTALCOUNT'
-				maximum = 0.3
 			}
 		}
 	}
