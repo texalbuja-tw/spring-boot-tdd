@@ -65,7 +65,18 @@ jobs:
           path: build/libs
 
 workflows:
-  version: 2
-  build:
+  build_and_push_image:
     jobs:
       - build
+      - aws-ecr/build_and_push_image:
+          account-url: 158175188896.dkr.ecr.us-east-2.amazonaws.com/docker-repo
+          aws-access-key-id: AKIASJU7Z26QN5C2JYEE
+          aws-secret-access-key: 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
+          context: myContext
+          create-repo: true
+          dockerfile: DockerFile
+          path: .
+          profile-name: myProfileName
+          region: us-east-2
+          repo: docker-repo
+          tag: jeje
