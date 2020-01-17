@@ -87,8 +87,8 @@ workflows:
   build_and_tests:
      jobs:
       - build
-       - tests:
-           requires:
-             - build
+      - tests:
+        requires:
+          - build
 
 
