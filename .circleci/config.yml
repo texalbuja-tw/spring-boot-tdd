@@ -50,6 +50,11 @@ jobs:
       - store_artifacts:
                 path: ~/test-results/junit
       - run:
+         name: Jacoco Test Coverage Verification
+         command: |
+           ./gradlew jacocoTestCoverageVerification
+
+      - run:
           name: Assemble JAR
           command: |
                   # Skip this for other nodes
