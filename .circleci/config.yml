@@ -8,7 +8,7 @@ workflows:
           account-url: accountUrl
           aws-access-key-id: AKIASJU7Z26QN5C2JYEE
           aws-secret-access-key: awsSecretAccessKey
-          context: myContext
+          context: CI
           create-repo: true
           dockerfile: DockerFile
           path: .
