@@ -37,35 +37,6 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
-      - run:
-          name: Assemble JAR
-          command: |
-            # Skip this for other nodes
-            if [ "$CIRCLE_NODE_INDEX" == 0 ]; then
-              ./gradlew assemble
-            fi
-      # As the JAR was only assembled in the first build container, build/libs will be empty in all the other build containers.
-      - store_artifacts:
-          path: build/libs
-
-  tests:
-    docker:
-      # specify the version you desire here
-      - image: circleci/openjdk:11-jdk
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
-    working_directory: ~/repo
-
-    environment:
-      # Customize the JVM maximum heap limit
-      JVM_OPTS: -Xmx512m
-      TERM: dumb
-
-    steps:
       # run tests!
       - run: gradle test
       - run:
@@ -82,11 +53,19 @@ jobs:
           name: Jacoco Test Coverage Verification
           command: |
             ./gradlew jacocoTestCoverageVerification
+      - run:
+          name: Assemble JAR
+          command: |
+            # Skip this for other nodes
+            if [ "$CIRCLE_NODE_INDEX" == 0 ]; then
+              ./gradlew assemble
+            fi
+          # As the JAR was only assembled in the first build container, build/libs will be empty in all the other build containers.
+      - store_artifacts:
+          path: build/libs
+
 workflows:
   version: 2
-  build_and_tests:
+  build:
     jobs:
       - build
-      - tests:
-          requires:
-            - build
