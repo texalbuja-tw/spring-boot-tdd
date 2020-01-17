@@ -12,7 +12,7 @@ workflows:
           create-repo: true
           dockerfile: DockerFile
           path: .
-          profile-name: myProfileName
+          profile-name: default
           region: region
           repo: docker-repo
           tag: jeje
