@@ -69,7 +69,6 @@ jobs:
 workflows:
   build_and_push_image:
     jobs:
-      - build
       - aws-ecr/build_and_push_image:
           account-url: 158175188896.dkr.ecr.us-east-2.amazonaws.com/docker-repo
           aws-access-key-id: AKIASJU7Z26QN5C2JYEE
