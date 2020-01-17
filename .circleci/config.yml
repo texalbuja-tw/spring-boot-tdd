@@ -3,6 +3,8 @@
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
 version: 2.1
+orbs:
+  aws-ecr: circleci/aws-ecr@6.7.0
 jobs:
   build:
     docker:
