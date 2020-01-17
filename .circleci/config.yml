@@ -12,7 +12,7 @@ workflows:
           create-repo: true
           dockerfile: DockerFile
           path: .
-          profile-name: default
+          profile-name: CircleCIGroup
           region: region
           repo: docker-repo
           tag: jeje
